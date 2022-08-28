@@ -60,6 +60,7 @@ in
       EDITOR = "nvim";
       CLICOLOR = "1";
       LSCOLORS = "gx";
+      EXA_COLORS = import ./config/exa.nix;
       PAGER = "less";
       LANG = "en_US.UTF-8";
       BAT_THEME = "TwoDark";
