@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   defaultPkgs = with pkgs; [
     exa     # ls
@@ -28,7 +28,19 @@ let
 
 in
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    /*
+    overlays = [
+      (
+        import (builtins.fetchTarball {
+            url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+        })
+      )
+    ];
+    */
+  };
+
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -48,12 +60,20 @@ in
 
     packages      = defaultPkgs ++ gitPkgs ++ languagePackages ++ mediaPkgs;
 
-    file = {
-      ".config/nvim" = {
-        recursive = true;
-        source = ./config/nvim;
+    activation = {
+      setupNVimDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+	    $DRY_RUN_CMD ln -s $VERBOSE_ARG \
+		$HOME/dotfiles/nvim $HOME/.config/
+      '';
+     };
+  /*
+  file = {
+     ".config/nvim" = {
+        recursive = false;
+        source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/nvim;
       };
     };
+*/
 
     sessionVariables = {
       THIS_IS_THE_REAL_ME = "dave";
