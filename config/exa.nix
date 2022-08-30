@@ -6,11 +6,20 @@
 with (import ./exa-helpers.nix);
 
   update_colors {
-    users_user_you           = fg(222);
+    users_user_you           = fg(148);
     users_user_someone_else  = fg(136);
-    filekinds_directory      = fg(Blue);
+ /* users_group_yours        = fg(Yellow) ++ bold; */
+ /* users_group_not_yours    = Default; */
+
+    filekinds_directory      = fg(147);
     filekinds_executable     = fg(Green);
-    filekinds_normal         = fg(Grey50);
+    filekinds_normal         = fg(159);
+ /* filekinds_pipe           = fg(Yellow); */
+ /* filekinds_socket         = fg(Red) ++ bold; */
+ /* filekinds_block_device   = fg(Yellow) ++ bold; */
+ /* filekinds_char_device    = fg(Yellow) ++ bold; */
+ /* filekinds_symlink        = fg(Aqua); */
+ /* filekinds_broken_symlink = fg(Red); */
 
     perms_user_read          = fg(113);
     perms_user_write         = fg(113);
@@ -40,6 +49,25 @@ with (import ./exa-helpers.nix);
     size_unit_mega           = fg(Grey78);
     size_unit_giga           = fg(195);
     size_unit_huge           = fg(225);
+ /* size_major               = fg(Green) ++ bold; */
+ /* size_minor               = fg(Green); */
+
+ /* links_normal             = fg(Red) ++ bold; */
+ /* links_multi_link_file    = fg(Red) ++ bg(Yellow); */
+
+ /* git_new                  = fg(Green); */
+ /* git_modified             = fg(Blue); */
+ /* git_deleted              = fg(Red); */
+ /* git_renamed              = fg(Yellow); */
+ /* git_typechange           = fg(Purple); */
+
     misc_date                = fg(74);
+ /* misc_punctuation         = fg(244); */
+ /* misc_inode               = fg(Purple); */
+ /* misc_blocks              = fg(Aqua); */
+ /* misc_header              = Default ++ underline; */
+ /* misc_symlink_path        = fg(Aqua); */
+ /* misc_control_char        = fg(Red); */
+ /* misc_broken_path_overlay = Default ++ underline; */
   }
 

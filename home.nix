@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   defaultPkgs = with pkgs; [
+    direnv  # for directory-based environments
     exa     # ls
     fd      # find
     ripgrep # grep
@@ -13,6 +14,7 @@ let
 
   languagePackages = with pkgs; [
     bun
+    cargo
     /* deno */
     elixir
     erlang
@@ -62,8 +64,8 @@ in
 
     activation = {
       setupNVimDotfiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
-	    $DRY_RUN_CMD ln -s $VERBOSE_ARG \
-		$HOME/dotfiles/nvim $HOME/.config/
+	    $DRY_RUN_CMD \
+        ln -sf $VERBOSE_ARG $HOME/dotfiles/nvim $HOME/.config/
       '';
      };
   /*

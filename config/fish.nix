@@ -73,8 +73,12 @@ in
            ""
       }
 
-      alias ls='exa -a'
       fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
+      direnv hook fish | source      
+
+      alias ls='exa -a'
+      alias less='bat'
   '';
 }
 
