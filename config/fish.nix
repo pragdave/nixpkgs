@@ -78,6 +78,7 @@ in
       direnv hook fish | source      
 
       alias ls='exa -a'
+      alias lrt='exa -las date'
       alias less='bat'
   '';
 }

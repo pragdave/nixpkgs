@@ -2,8 +2,13 @@
 let
   defaultPkgs = with pkgs; [
     direnv  # for directory-based environments
+    docker  # just 'cos
     exa     # ls
     fd      # find
+    neovim-remote  # invoke existing nvim from command line
+    podman  # dockeralike
+    postgresql
+    qemu
     ripgrep # grep
     tree    # dir listing
   ];
